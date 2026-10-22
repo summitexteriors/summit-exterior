@@ -1,0 +1,61 @@
+{
+  "roof": {
+    "brand": "CertainTeed",
+    "lines": [
+      {"id": "landmark", "name": "Landmark", "colors": [
+        {"id": "cobblestone-gray", "name": "Cobblestone Gray", "hex": "#8A8C8E", "desc": "medium light gray with subtle darker flecks"},
+        {"id": "georgetown-gray", "name": "Georgetown Gray", "hex": "#7B7F82", "desc": "medium cool gray blend"},
+        {"id": "graphite", "name": "Graphite", "hex": "#4A4D50", "desc": "dark gray with a slight blue undertone"},
+        {"id": "heather-blend", "name": "Heather Blend", "hex": "#7A726A", "desc": "blend of gray, tan and soft brown"},
+        {"id": "moire-black", "name": "Moiré Black", "hex": "#26282A", "desc": "very dark black with subtle charcoal highlights"},
+        {"id": "weathered-wood", "name": "Weathered Wood", "hex": "#6E645A", "desc": "warm brownish gray like weathered cedar"},
+        {"id": "charcoal-black", "name": "Charcoal Black", "hex": "#2F3133", "desc": "dark charcoal black"},
+        {"id": "burnt-sienna", "name": "Burnt Sienna", "hex": "#6B4A3C", "desc": "deep reddish brown"},
+        {"id": "resawn-shake", "name": "Resawn Shake", "hex": "#6F5A47", "desc": "medium brown with a cedar shake look"},
+        {"id": "colonial-slate", "name": "Colonial Slate", "hex": "#5C6670", "desc": "blue-gray slate tone"},
+        {"id": "driftwood", "name": "Driftwood", "hex": "#7C6D5E", "desc": "tan-brown blended with gray"},
+        {"id": "pewterwood", "name": "Pewterwood", "hex": "#70706D", "desc": "neutral gray with a hint of brown"}
+      ]},
+      {"id": "landmark-pro", "name": "Landmark PRO", "colors": [
+        {"id": "max-def-birchwood", "name": "Max Def Birchwood", "hex": "#A39B90", "desc": "light warm gray-beige"},
+        {"id": "max-def-coastal-blue", "name": "Max Def Coastal Blue", "hex": "#5E7488", "desc": "muted blue-gray"},
+        {"id": "max-def-cobblestone-gray", "name": "Max Def Cobblestone Gray", "hex": "#8A8C8E", "desc": "medium light gray with subtle darker flecks"},
+        {"id": "max-def-georgetown-gray", "name": "Max Def Georgetown Gray", "hex": "#7B7F82", "desc": "medium cool gray blend"},
+        {"id": "max-def-heather-blend", "name": "Max Def Heather Blend", "hex": "#7A726A", "desc": "blend of gray, tan and soft brown"},
+        {"id": "max-def-pewterwood", "name": "Max Def Pewterwood", "hex": "#70706D", "desc": "neutral gray with a hint of brown"},
+        {"id": "max-def-driftwood", "name": "Max Def Driftwood", "hex": "#7C6D5E", "desc": "tan-brown blended with gray"},
+        {"id": "max-def-resawn-shake", "name": "Max Def Resawn Shake", "hex": "#6F5A47", "desc": "medium brown with a cedar shake look"},
+        {"id": "max-def-espresso", "name": "Max Def Espresso", "hex": "#3E322C", "desc": "very dark brown"},
+        {"id": "max-def-weathered-wood", "name": "Max Def Weathered Wood", "hex": "#6E645A", "desc": "warm brownish gray like weathered cedar"},
+        {"id": "max-def-burnt-sienna", "name": "Max Def Burnt Sienna", "hex": "#6B4A3C", "desc": "deep reddish brown"},
+        {"id": "max-def-moire-black", "name": "Max Def Moiré Black", "hex": "#26282A", "desc": "very dark black with subtle charcoal highlights"},
+        {"id": "max-def-charcoal-black", "name": "Max Def Charcoal Black", "hex": "#2F3133", "desc": "dark charcoal black"},
+        {"id": "max-def-shenandoah", "name": "Max Def Shenandoah", "hex": "#5A5048", "desc": "dark brown-gray blend"},
+        {"id": "max-def-red-oak", "name": "Max Def Red Oak", "hex": "#7A4B3A", "desc": "warm reddish brown"},
+        {"id": "max-def-evergreen", "name": "Max Def Evergreen", "hex": "#3F5446", "desc": "deep green"},
+        {"id": "max-def-colonial-slate", "name": "Max Def Colonial Slate", "hex": "#5C6670", "desc": "blue-gray slate tone"}
+      ]}
+    ]
+  },
+  "paint": {
+    "brand": "Sherwin-Williams",
+    "colors": [
+      {"id": "sw-7036", "name": "Accessible Beige", "sw": "SW 7036", "hex": "#D1C7B8"},
+      {"id": "sw-7029", "name": "Agreeable Gray", "sw": "SW 7029", "hex": "#D1CBC1"},
+      {"id": "sw-7015", "name": "Repose Gray", "sw": "SW 7015", "hex": "#CCC9C0"},
+      {"id": "sw-7016", "name": "Mindful Gray", "sw": "SW 7016", "hex": "#BCB7AD"},
+      {"id": "sw-7043", "name": "Worldly Gray", "sw": "SW 7043", "hex": "#CEC6BB"},
+      {"id": "sw-6204", "name": "Sea Salt", "sw": "SW 6204", "hex": "#CDD2CA"},
+      {"id": "sw-9130", "name": "Evergreen Fog", "sw": "SW 9130", "hex": "#95978A"},
+      {"id": "sw-7048", "name": "Urbane Bronze", "sw": "SW 7048", "hex": "#54504A"},
+      {"id": "sw-7069", "name": "Iron Ore", "sw": "SW 7069", "hex": "#434341"},
+      {"id": "sw-6258", "name": "Tricorn Black", "sw": "SW 6258", "hex": "#2F2F30"},
+      {"id": "sw-6244", "name": "Naval", "sw": "SW 6244", "hex": "#2F3D4C"},
+      {"id": "sw-7012", "name": "Creamy", "sw": "SW 7012", "hex": "#EFE8DB"},
+      {"id": "sw-7006", "name": "Extra White", "sw": "SW 7006", "hex": "#EEEFEA"},
+      {"id": "sw-7014", "name": "Eider White", "sw": "SW 7014", "hex": "#E2DED8"},
+      {"id": "sw-6119", "name": "Antique White", "sw": "SW 6119", "hex": "#E8DCC6"},
+      {"id": "sw-6387", "name": "Compatible Cream", "sw": "SW 6387", "hex": "#E8C89E"}
+    ]
+  }
+}

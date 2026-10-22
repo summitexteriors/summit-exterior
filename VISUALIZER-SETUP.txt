@@ -1,0 +1,20 @@
+SUMMIT EXTERIOR GROUP: ROOF AND PAINT VISUALIZER SETUP
+
+What it needs
+- The site must be deployed from GitHub (or the Netlify command-line tool), not by dragging a folder.
+  Netlify only runs the server functions in netlify/functions when it builds the site itself.
+- An OpenAI API account with billing turned on and a monthly spend limit set.
+
+Steps
+1. Put all files from this zip in a GitHub repository and connect it to your Netlify site
+   (Site configuration > Build and deploy > Link repository). Publish directory: "." (already set in netlify.toml).
+2. In OpenAI: create an API key. In OpenAI billing, set a monthly spend limit (example: $50).
+3. In Netlify: Site configuration > Environment variables > add:
+     OPENAI_API_KEY            (required)  your key
+     OPENAI_IMAGE_MODEL        (optional)  default gpt-image-2.5-sunburst
+     OPENAI_IMAGE_QUALITY      (optional)  low, medium (default) or high. Lower costs less.
+     VIZ_LIMIT_PER_IP_PER_DAY  (optional)  default 3 previews per visitor per day
+     VIZ_LIMIT_GLOBAL_PER_DAY  (optional)  default 60 previews per day across the whole site
+4. Redeploy. Leads from the visualizer appear in Netlify > Forms > "visualizer".
+
+Never put the API key in index.html or any file in the repository.
