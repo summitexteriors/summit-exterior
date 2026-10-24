@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /thank-you.html
+Disallow: /api/
 
 Sitemap: https://summitexteriorsgr.com/sitemap.xml
