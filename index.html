@@ -153,6 +153,12 @@ dialog.lb img{width:100%;height:auto;display:block}dialog.lb .x{position:absolut
 .fin .facts li{border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:6px 14px;font-size:15px}
 .fin .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .fin small{display:block;color:var(--muted);font-size:13px;line-height:1.5;margin-top:22px;max-width:80ch}
+
+.acorn-float{position:fixed;left:12px;bottom:12px;z-index:15;max-width:calc(100vw - 24px);background:#fff;border:1px solid #111;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.25);line-height:0}
+.acorn-float a{display:block;padding:5px}
+.acorn-float img{display:block;width:min(402px,calc(100vw - 36px));height:auto;border-radius:3px}
+.acorn-float button{position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold);background:var(--green-d);color:#fff;font:700 14px/1 Montserrat,sans-serif;cursor:pointer;padding:0}
+@media(max-width:860px){.acorn-float{left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
@@ -344,5 +350,7 @@ tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.c)
 document.querySelectorAll('.gal .ph').forEach(function(b){b.addEventListener('click',function(){var i=b.querySelector('img');lb.querySelector('img').src=i.src;lb.querySelector('img').alt=i.alt;lb.showModal()})});
 lb.addEventListener('click',function(e){if(e.target===lb||e.target.className==='x')lb.close()});})();
 </script>
+<div class="acorn-float" id="acornFloat"><a href="https://www.acornfinance.com/pre-qualify/?d=61NGM&amp;utm_medium=web_pre_qual_banner" target="_blank" rel="noopener noreferrer"><img id="acornBanner" src="https://fs.acornfinance.com/banners/acorn-finance-banner-easy-payment-options-horizontal-small.png" width="402" height="82" alt="Acorn Finance: apply and get affordable payment options from multiple lenders"></a><button type="button" aria-label="Close financing banner" id="acornClose">&times;</button></div>
+<script>(function(){var b=document.getElementById('acornFloat');if(!b)return;try{if(sessionStorage.getItem('acornClosed')==='1'){b.hidden=true}}catch(e){}document.getElementById('acornClose').addEventListener('click',function(){b.hidden=true;try{sessionStorage.setItem('acornClosed','1')}catch(e){}})})();</script>
 </body>
 </html>
