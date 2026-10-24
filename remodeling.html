@@ -160,7 +160,16 @@ dialog.lb img{width:100%;height:auto;display:block}dialog.lb .x{position:absolut
 .acorn-float button{position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold);background:var(--green-d);color:#fff;font:700 14px/1 Montserrat,sans-serif;cursor:pointer;padding:0}
 @media(max-width:860px){.acorn-float{left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom))}}
 
-.hero2{background:linear-gradient(180deg,var(--green),var(--green-d));color:#fff;padding:56px 0 0;overflow:hidden}
+.hero2{background:linear-gradient(90deg,rgba(20,51,39,.93) 0%,rgba(20,51,39,.72) 50%,rgba(20,51,39,.38) 100%),url(summit-siding-exterior-03.jpg) center 22%/cover no-repeat,var(--green-d);color:#fff;padding:56px 0 0;overflow:hidden}
+@media(max-width:900px){.hero2{background:linear-gradient(180deg,rgba(20,51,39,.93),rgba(20,51,39,.86)),url(summit-siding-exterior-03.jpg) center/cover no-repeat,var(--green-d)}}
+.ribbon{background:var(--green-d);color:#fff;border-bottom:4px solid var(--gold)}.ribbon .wrap{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:center;padding-block:16px}
+.ribbon span{font:700 15px Montserrat,sans-serif;display:flex;align-items:center;gap:8px}.ribbon span:before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.mos{padding:56px 0 8px}.mos .mg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}@media(max-width:800px){.mos .mg{grid-template-columns:1fr 1fr}}
+.mos figure{margin:0;position:relative;border:5px solid var(--green);outline:2px solid var(--gold);outline-offset:-8px;border-radius:4px;overflow:hidden;line-height:0}
+.mos img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}.mos figure:hover img{transform:scale(1.04)}
+.mos figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(10,25,19,.88));color:#fff;font:700 13.5px/1.2 Montserrat,sans-serif}
+@media (prefers-reduced-motion:reduce){.mos img{transition:none}}
+
 .hero2 .grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start;padding-bottom:40px}
 @media(max-width:900px){.hero2 .grid2{grid-template-columns:1fr;gap:28px}.hero2{padding-top:36px}}
 .hero2 h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.01em;max-width:18ch}
