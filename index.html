@@ -287,7 +287,7 @@ nav{gap:14px}nav a{white-space:nowrap;font-size:13px}nav .btn{font-size:13px;pad
 <small>Financing is offered by independent lenders through Acorn Finance and is subject to credit review and approval. Summit Exterior Group is not a lender and does not make credit decisions. Rates, terms and funding times depend on your credit profile and the lender you choose. Prequalification uses a soft credit check that does not affect your credit score. A lender may perform a hard credit inquiry, which can affect your score, when you choose an offer and move forward. Not all applicants will qualify. Acorn Finance is a DBA of Headway Sales Inc., NMLS ID 1817022.</small>
 </div></section>
 <section class="viz" id="visualizer"><div class="wrap"><h2>See it on your home</h2>
-<p class="lead">Upload a photo of your house, pick a CertainTeed shingle color or a Sherwin-Williams paint color, and see a preview in about a minute. It is free, and a great way to narrow your choices before your inspection.</p>
+<p class="lead">Upload a photo of your house, pick a CertainTeed shingle color or a Sherwin-Williams paint color, and we will email you a preview of your home, usually within one business day. It is free, and a great way to narrow your choices before your inspection.</p>
 <div class="tabs" role="tablist" aria-label="Choose a preview type"><button class="tab" role="tab" id="tab-roof" aria-selected="true" data-mode="roof">New roof</button><button class="tab" role="tab" id="tab-paint" aria-selected="false" data-mode="paint">Exterior paint</button></div>
 <div class="vgrid">
 <div class="vbox"><h3>1. Upload a photo</h3>
@@ -302,11 +302,12 @@ nav{gap:14px}nav a{white-space:nowrap;font-size:13px}nav .btn{font-size:13px;pad
 <div class="vbox" style="margin-top:28px"><h3>3. Where should we send your preview?</h3>
 <form class="vform" id="vform" novalidate>
 <div class="row"><label>Name<input id="vname" autocomplete="name" required></label><label>Phone<input id="vphone" type="tel" autocomplete="tel" required></label></div>
-<label>Email (optional)<input id="vemail" type="email" autocomplete="email"></label>
+<label>Email (we send your preview here)<input id="vemail" type="email" autocomplete="email" required></label>
+<label>Home address<input id="vaddr" autocomplete="street-address" placeholder="Street, city, ZIP" required></label>
 <div class="hp" aria-hidden="true"><label>Website<input id="vweb" tabindex="-1" autocomplete="off"></label></div>
-<label class="check"><input type="checkbox" id="vconsent" required><span>Summit Exterior Group may contact me about my project. My photo is used only to create this preview and is deleted after I view it.</span></label>
-<button class="btn" type="submit" id="vgo">Show my preview</button>
-<div class="vbusy" id="vbusy" role="status"><span class="spin"></span><span>Creating your preview. This usually takes about a minute. Please keep this page open.</span></div>
+<label class="check"><input type="checkbox" id="vconsent" required><span>Summit Exterior Group may contact me about my project. My photo and address are used only to create my preview and prepare my estimate.</span></label>
+<button class="btn" type="submit" id="vgo">Email me my preview</button>
+<div class="vbusy" id="vbusy" role="status"><span class="spin"></span><span>Sending. Sending your photo. Please keep this page open.</span></div>
 <p class="vmsg" id="vmsg" role="alert"></p>
 </form></div>
 <div class="vres" id="vres" aria-live="polite"><h3 id="vrestitle">Your preview</h3>
@@ -315,7 +316,7 @@ nav{gap:14px}nav a{white-space:nowrap;font-size:13px}nav .btn{font-size:13px;pad
 <div class="cta" style="margin:16px 0 0"><a class="btn" href="#contact">Schedule my free inspection</a><a class="btn alt" id="vdl" download="summit-preview.jpg" href="#" style="color:var(--text);border-color:var(--green)">Save my preview</a></div></div>
 <p class="vfine" style="margin-top:22px">Not affiliated with or endorsed by CertainTeed or Sherwin-Williams. Product names are used only to describe the styles and colors shown.</p>
 </div></section>
-<form name="visualizer" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="name"><input name="phone"><input name="email"><input name="preview"><input name="choice"></form>
+<form name="visualizer" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="name"><input name="phone"><input name="email"><input name="address"><input name="preview"><input name="choice"><input type="file" name="photo"><input name="utm_source"><input name="utm_medium"><input name="utm_campaign"><input name="utm_content"><input name="fbclid"><input name="landing_page"></form>
 <section class="forms" id="forms"><div class="wrap"><h2>Forms</h2>
 <p class="lead">Blank copies of the paperwork we use on every job. Use them as a guide to how we write estimates and handle changes, or print them to fill in by hand.</p>
 <div class="fgrid">
@@ -421,14 +422,25 @@ $('vform').addEventListener('submit',function(e){e.preventDefault();msg('');
  if(name.length<2)return msg('Please enter your name.',true);
  if(phone.replace(/\D/g,'').length<10)return msg('Please enter a phone number.',true);
  if(!$('vconsent').checked)return msg('Please check the box to continue.',true);
+ if(!/^\S+@\S+\.\S+$/.test($('vemail').value.trim()))return msg('Please enter your email so we can send your preview.',true);
+ if($('vaddr').value.trim().length<6)return msg('Please enter your home address.',true);
+ if($('vweb').value)return;
  busy(true);$('vres').style.display='none';
- fetch('/api/viz-start',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({mode:mode,choiceId:choiceId,name:name,phone:phone,consent:true,website:$('vweb').value,image:imgData})})
- .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})}).then(function(x){
-  if(!x.ok){busy(false);msg(x.j.error||'Something went wrong. Please try again.',true);return}
-  track('generate_lead','Lead',{project:'visualizer_'+mode});
-  try{var chosen=chips.querySelector('[aria-pressed=true] span');
-   fetch('/',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'visualizer',name:name,phone:phone,email:$('vemail').value.trim(),preview:mode,choice:chosen?chosen.textContent:choiceId}).toString()})}catch(err){}
-  poll(x.j.jobId,0)}).catch(function(){busy(false);msg('We could not reach the preview tool. Please try again.',true)})});
+ var chosen=chips.querySelector('[aria-pressed=true] span');
+ var bin=atob(imgData.split(',')[1]),arr=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+ var fd=new FormData();fd.append('form-name','visualizer');fd.append('bot-field','');
+ fd.append('name',name);fd.append('phone',phone);fd.append('email',$('vemail').value.trim());fd.append('address',$('vaddr').value.trim());
+ fd.append('preview',mode);fd.append('choice',chosen?chosen.textContent:choiceId);
+ fd.append('photo',new Blob([arr],{type:'image/jpeg'}),'house-photo.jpg');
+ var ss=function(k){try{return sessionStorage.getItem(k)||''}catch(x){return ''}};
+ ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){fd.append(k,ss(k))});
+ fd.append('landing_page',ss('landing_page')||location.pathname);
+ fetch('/',{method:'POST',body:fd}).then(function(r){
+  if(!r.ok)throw new Error('send failed');
+  busy(false);track('generate_lead','Lead',{project:'visualizer_'+mode});
+  $('vgo').disabled=true;$('vgo').textContent='Sent. Check your email soon.';
+  msg('Thank you, '+name.split(' ')[0]+'. We received your photo and will email your preview to '+$('vemail').value.trim()+', usually within one business day. We may also call to set up your free inspection.',false);
+ }).catch(function(){busy(false);msg('We could not send that. Please try again, or call 971-396-3033.',true)})});
 })();
 
 (function(){var tabs=document.querySelectorAll('.gal .tab'),figs=document.querySelectorAll('.gal figure'),cnt=document.getElementById('galcnt'),lb=document.getElementById('lb');if(!lb)return;
